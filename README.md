@@ -1,6 +1,4 @@
-Modul 319 - Abschlussarbeit
-
-Aufgaben
+Modul 319 - benotete Abschlussarbeit
 
 1. Aufgabe – Erste Gedanken über Fibonacci
   a) Wie lauten die nächsten drei Zahlen nach 21 in der Fibonacci-Folge?
