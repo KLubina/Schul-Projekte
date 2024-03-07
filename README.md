@@ -2,7 +2,7 @@ benotete Aufträge Modul 320
 
 Erster Auftrag
 
-1. Importiere das Maven-Projekt mandelbrot nach Eclipse. Du findest das Projekt im Archiv-File 320-01C - 04.00 Unterrichtsmittel: mandelbrot.zip.
+1. Importiere das Maven-Projekt mandelbrot nach Eclipse.
  
 2. Implementiere die Klasse CrazyCoordinate im package oop.mandelbrot.coordinate:
 
