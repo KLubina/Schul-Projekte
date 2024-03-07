@@ -1,10 +1,10 @@
 benotete Aufträge Modul 320
 
-1. Auftrag
+Erster Auftrag
 
-	1. Importiere das Maven-Projekt mandelbrot nach Eclipse.
+1. Importiere das Maven-Projekt mandelbrot nach Eclipse.
  
-	2. Implementiere die Klasse CrazyCoordinate im package oop.mandelbrot.coordinate:
+2. Implementiere die Klasse CrazyCoordinate im package oop.mandelbrot.coordinate:
 
   Beschreibung:
 
@@ -21,7 +21,7 @@ benotete Aufträge Modul 320
 		f. Die Methode scalar(): (x1,y1)=>x1*x1 + y1*y1
 
 
-        3. Dokumentiere deine Implementierung mit Javadoc.
+3. Dokumentiere deine Implementierung mit Javadoc.
 
-        4. Freiwillig: Versuche den Code so abzuändern, dass andere Farben entstehen.
+4. Freiwillig: Versuche den Code so abzuändern, dass andere Farben entstehen.
 
