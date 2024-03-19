@@ -1,6 +1,6 @@
 benotete Aufträge Modul 320
 
-Erster Auftrag
+Erster Auftrag (Mandelbrot)
 
 1. Importiere das Maven-Projekt mandelbrot nach Eclipse.
  
@@ -25,7 +25,7 @@ Erster Auftrag
 
 4. Freiwillig: Versuche den Code so abzuändern, dass andere Farben entstehen.
 
-Zweiter Auftrag
+Zweiter Auftrag (GameOfLife)
 
 Wir wollen das berühmte Game of Life implementieren.
 
