@@ -76,7 +76,7 @@ nav ul li a: hover{
   border-bottom: 2px solid #4c4c4c;
 }
 
-/* aside style - boxen verteilen mit flexbox */
+/* Aside-Style - Boxen verteilen mit Flexbox */
 
 .newswrapp {
   display: flex;
@@ -94,7 +94,7 @@ nav ul li a: hover{
   border-radius: 5px;
 }
 
-/* article-styling mit flex */
+/* Article-Styling mit Flex */
 
 .flex {
   margin-left: 20px;
@@ -131,7 +131,7 @@ img {
   height: auto;
 }
 
-/* media queries responsive */
+/* media responsivness */
 
 @media only screen and (mind-width: 320px) and (max-width: 768px) {
 
