@@ -1,6 +1,6 @@
 benotete Aufträge Modul 320
 
-Erster Auftrag (Mandelbrot)
+# Erster Auftrag (Mandelbrot)
 
 1. Importiere das Maven-Projekt mandelbrot nach Eclipse.
  
@@ -25,7 +25,7 @@ Erster Auftrag (Mandelbrot)
 
 4. Freiwillig: Versuche den Code so abzuändern, dass andere Farben entstehen.
 
-Zweiter Auftrag (GameOfLife)
+# Zweiter Auftrag (GameOfLife)
 
 Wir wollen das berühmte Game of Life implementieren.
 
@@ -35,4 +35,20 @@ Wir wollen das berühmte Game of Life implementieren.
 
 3. Ergänze dein Klassendiagramm um alle aus deiner Sicht relevanten Klassen im Programm Game of Life.
 
+# Dritter Auftrag (DNA)
 
+1. Kreiere in Eclipse ein neues Maven Projekt mit dem Namen dna der groupId oop und artifactId dna. Verwende die Java Version 21. 
+
+2. Mache ein Klassendiagramm für die Regeln eines DNA.
+
+3. Implementiere das in Teilaufgabe 2 entworfene Klassediagramm. 
+
+4. Entwerfe ein Klassendiagramm für das oben geschilderte DNA-Labor
+
+5. Implementiere das in Teilaufgabe 4 erstellte Klassendiagramm. 
+
+6. Kommentiere alle Klassen mit javadoc Kommentaren. 
+
+7. Implementiere  die Unit Tests für die Validierung der Punkte 3,4 und 5 der in Teilaufgabe 2 beschriebenen Eigenschaften einer DNA Sequenz.
+
+10. Exportiere dein Projekt als Archive (zip). 
