@@ -26,7 +26,7 @@ class DNAProbeTest {
     }
 
 	@Test
-	void tesInvalidSequenceExeptiont() {
+	void tesInvalidSequenceExeption() {
 		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 			new DNA_Probe(1, "ATGCGTTAA", "Fundort", LocalDate.now(), 1, "ATGCGTTAA", "Fundort", LocalDate.now());
 		});
