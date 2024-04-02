@@ -40,7 +40,7 @@ public class DNA_Probe {
      * @param sequence Die zu überprüfende DNA-Sequenz.
      * @return true, wenn die Sequenz gültig ist, sonst false.
      */
-	private boolean isValidSequence(String sequence) {
+	boolean isValidSequence(String sequence) {
 		return sequence != null && !sequence.isEmpty()
 				&& sequence.length() % 3 == 0
 				&& sequence.startsWith("ATG")
