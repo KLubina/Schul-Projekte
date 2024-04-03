@@ -3,4 +3,49 @@
   <groupId>oop</groupId>
   <artifactId>dna</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>dna</name>
+<description>DNA-Analyse</description>
+<properties>
+	<maven.compiler.source>21</maven.compiler.source>
+	<maven.compiler.target>21</maven.compiler.target>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+<dependencies>
+	<dependency>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter-api</artifactId>
+		<version>5.7.0</version>
+	<scope>test</scope>
+</dependency>
+<dependency>
+		<groupId>org.junit.jupiter</groupId>
+		<artifactId>junit-jupiter-engine</artifactId>
+		<version>5.7.0</version>
+		<scope>test</scope>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-test</artifactId>
+	<version>3.2.1</version>
+	<scope>test</scope>
+<exclusions>
+<exclusion>
+<groupId>org.junit.vintage</groupId>
+<artifactId>junit-vintage-engine</artifactId>
+</exclusion>
+</exclusions>
+</dependency>
+</dependencies>
+	<build>
+		<plugins>
+		<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>3.8.1</version>
+		<configuration>
+			<release>21</release>
+		</configuration>
+		</plugin>
+		</plugins>
+	</build>
 </project>
