@@ -51,4 +51,24 @@ Wir wollen das berühmte Game of Life implementieren.
 
 7. Implementiere  die Unit Tests für die Validierung der Punkte 3,4 und 5 der in Teilaufgabe 2 beschriebenen Eigenschaften einer DNA Sequenz.
 
-10. Exportiere dein Projekt als Archive (zip). 
+10. Exportiere dein Projekt als Archive (zip).
+
+# Vierter Auftrag (Projekt Knacknüsse/Rucksack-Problem)
+
+1. Zeichne ein Klassendiagramm für das Rucksack-Problem
+   
+2. Implementiere das Klassendiagramm
+
+3. Schreibe einen Unit-Test
+
+4. Erweitere das Klassendiagramm
+
+5. Erweitere das Programm aus der zweiten Teilaufgabe
+
+6. Schreibe einen Unit-Test
+
+7. Führe ein Code-Review mit deinem Banknachbar aus
+
+8. Für den Rucksack soll eine abstrakte Klasse und ein Interface definiert werden. Implementiere zwei verschiedenen Subklassen der abstrakten Klasse.
+
+9. Verwende nur ein Rucksackobjekt, bei welchem du während der Laufzeit die Packungs-Strategie auswechseln kannst.
