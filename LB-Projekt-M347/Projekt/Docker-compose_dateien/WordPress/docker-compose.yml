@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - wordpress_data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: modul347_wp
+      WORDPRESS_DB_USER: modul347
+      WORDPRESS_DB_PASSWORD: modul347WPPass123
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: modul347_wp
+      MYSQL_USER: modul347
+      MYSQL_PASSWORD: modul347WPPass123
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  wordpress_data:
+  db_data:
