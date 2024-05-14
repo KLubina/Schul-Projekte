@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  mediawiki:
+    image: mediawiki
+    ports:
+      - "8080:80"
+    volumes:
+      - mediawiki_data:/var/www/html
+    environment:
+      MW_DB_TYPE: mysql
+      MW_DB_NAME: modul347_wiki
+      MW_DB_USER: modul347
+      MW_DB_PASSWORD: modul347Pass123
+      MW_DB_INSTALLDB_USER: root
+      MW_DB_INSTALLDB_PASS: rootPass123
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: modul347_wiki
+      MYSQL_USER: modul347
+      MYSQL_PASSWORD: modul347Pass123
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  mediawiki_data:
+  db_data:
