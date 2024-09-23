@@ -1,7 +1,7 @@
 package com.example.jwt.domain.tea;
 
 import com.example.jwt.core.generic.ExtendedEntity;
-import com.example.jwt.domain.teaType.TeaType;
+import com.example.jwt.domain.teaSort.TeaSort;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -26,7 +26,7 @@ public class Tea extends ExtendedEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tea_type_id", nullable = false) // Foreign key for teaType
-    private TeaType teaType;
+    private TeaSort teaSort;
 
     @Column(name = "harvestDate", nullable = false)
     private Date harvestDate;
@@ -34,12 +34,12 @@ public class Tea extends ExtendedEntity {
     public Tea() {
     }
 
-    public Tea(UUID id, String name, int buyPrice, int sellPrice, TeaType teaType, Date harvestDate) {
+    public Tea(UUID id, String name, int buyPrice, int sellPrice, TeaSort teaSort, Date harvestDate) {
         super(id);
         this.name = name;
         this.buyPrice = buyPrice;
         this.sellPrice = sellPrice;
-        this.teaType = teaType;
+        this.teaSort = teaSort;
         this.harvestDate = harvestDate;
     }
 
@@ -67,12 +67,12 @@ public class Tea extends ExtendedEntity {
         this.sellPrice = sellPrice;
     }
 
-    public TeaType getTeaType() {
-        return teaType;
+    public TeaSort getTeaType() {
+        return teaSort;
     }
 
-    public void setTeaType(TeaType teaType) {
-        this.teaType = teaType;
+    public void setTeaType(TeaSort teaSort) {
+        this.teaSort = teaSort;
     }
 
     public Date getHarvestDate() {

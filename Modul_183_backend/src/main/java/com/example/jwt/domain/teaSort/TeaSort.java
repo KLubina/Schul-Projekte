@@ -1,4 +1,4 @@
-package com.example.jwt.domain.teaType;
+package com.example.jwt.domain.teaSort;
 
 import com.example.jwt.core.generic.ExtendedEntity;
 import com.example.jwt.domain.tea.Tea;
@@ -12,7 +12,7 @@ import java.util.HashSet;
 
 @Entity
 @Table(name = "tea_type")
-public class TeaType extends ExtendedEntity {
+public class TeaSort extends ExtendedEntity {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
@@ -20,13 +20,13 @@ public class TeaType extends ExtendedEntity {
     @Column(name = "minAge", nullable = true)
     private int minAge;
 
-    @OneToMany(mappedBy = "teaType")
+    @OneToMany(mappedBy = "teaSort")
     private Set<Tea> teas = new HashSet<>();
 
-    public TeaType() {
+    public TeaSort() {
     }
 
-    public TeaType(UUID id, String name, Integer minAge, Set<Tea> teas) {
+    public TeaSort(UUID id, String name, Integer minAge, Set<Tea> teas) {
         super(id);
         this.name = name;
         this.minAge = minAge;

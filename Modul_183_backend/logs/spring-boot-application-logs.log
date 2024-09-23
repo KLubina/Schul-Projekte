@@ -3436,3 +3436,401 @@ Caused by: org.hibernate.HibernateException: Unable to determine Dialect without
 2024-09-23T18:52:59.135+02:00  INFO 9232 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1cdb280b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@cf0bc92, org.springframework.security.web.context.SecurityContextHolderFilter@5b58f639, org.springframework.security.web.header.HeaderWriterFilter@27caa186, org.springframework.web.filter.CorsFilter@3f8a44a4, org.springframework.security.web.authentication.logout.LogoutFilter@4bd39edc, com.example.jwt.core.security.CustomAuthenticationFilter@40625ac6, com.example.jwt.core.security.CustomAuthorizationFilter@53cb9b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76641439, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1db565f2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c2191a8, org.springframework.security.web.session.SessionManagementFilter@753c7411, org.springframework.security.web.access.ExceptionTranslationFilter@3df4cd96, org.springframework.security.web.access.intercept.AuthorizationFilter@726dd367]
 2024-09-23T18:52:59.415+02:00  INFO 9232 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
 2024-09-23T18:52:59.421+02:00  INFO 9232 --- [main] com.example.jwt.JwtApplication           : Started JwtApplication in 2.888 seconds (process running for 3.103)
+2024-09-23T19:26:00.591+02:00  INFO 9232 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:26:00.593+02:00  INFO 9232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:26:00.597+02:00  INFO 9232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:32:14.303+02:00  INFO 12444 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 12444 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:32:14.305+02:00  INFO 12444 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:32:14.662+02:00  INFO 12444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:32:14.716+02:00  INFO 12444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:32:15.056+02:00  INFO 12444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:32:15.063+02:00  INFO 12444 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:32:15.063+02:00  INFO 12444 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:32:15.092+02:00  INFO 12444 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:32:15.092+02:00  INFO 12444 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 760 ms
+2024-09-23T19:32:15.181+02:00  INFO 12444 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:32:15.206+02:00  INFO 12444 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:32:15.222+02:00  INFO 12444 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:32:15.335+02:00  INFO 12444 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:32:15.348+02:00  INFO 12444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:32:15.433+02:00  INFO 12444 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@51ed2f68
+2024-09-23T19:32:15.434+02:00  INFO 12444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:32:16.065+02:00  INFO 12444 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T19:32:16.244+02:00  INFO 12444 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:32:16.576+02:00  WARN 12444 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T19:32:16.753+02:00  INFO 12444 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@577dac16, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18ed9480, org.springframework.security.web.context.SecurityContextHolderFilter@b8c6406, org.springframework.security.web.header.HeaderWriterFilter@2821da0a, org.springframework.web.filter.CorsFilter@5fb05c07, org.springframework.security.web.authentication.logout.LogoutFilter@53b83897, com.example.jwt.core.security.CustomAuthenticationFilter@238c63df, com.example.jwt.core.security.CustomAuthorizationFilter@192b76a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@13f10967, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@76ffd052, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d96a895, org.springframework.security.web.session.SessionManagementFilter@e7ddf8d, org.springframework.security.web.access.ExceptionTranslationFilter@70ca8e72, org.springframework.security.web.access.intercept.AuthorizationFilter@3e729d46]
+2024-09-23T19:32:17.045+02:00  INFO 12444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-09-23T19:32:17.052+02:00  INFO 12444 --- [main] com.example.jwt.JwtApplication           : Started JwtApplication in 2.976 seconds (process running for 3.173)
+2024-09-23T19:32:22.687+02:00  INFO 12444 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:32:22.690+02:00  INFO 12444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:32:22.696+02:00  INFO 12444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:43:26.190+02:00  INFO 13715 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 13715 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:43:26.192+02:00  INFO 13715 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:43:26.549+02:00  INFO 13715 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:43:26.604+02:00  INFO 13715 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:43:26.947+02:00  INFO 13715 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:43:26.953+02:00  INFO 13715 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:43:26.954+02:00  INFO 13715 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:43:26.983+02:00  INFO 13715 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:43:26.984+02:00  INFO 13715 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 770 ms
+2024-09-23T19:43:27.071+02:00  INFO 13715 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:43:27.099+02:00  INFO 13715 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:43:27.115+02:00  INFO 13715 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:43:27.230+02:00  INFO 13715 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:43:27.244+02:00  INFO 13715 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:43:27.325+02:00  INFO 13715 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6704df84
+2024-09-23T19:43:27.326+02:00  INFO 13715 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:43:27.472+02:00 ERROR 13715 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.jwt.domain.teaType.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:43:27.473+02:00  WARN 13715 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaType.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:43:27.473+02:00  INFO 13715 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:43:27.477+02:00  INFO 13715 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:43:27.479+02:00  INFO 13715 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-23T19:43:27.487+02:00  INFO 13715 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-23T19:43:27.495+02:00 ERROR 13715 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaType.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) ~[spring-boot-3.2.1.jar:3.2.1]
+	at com.example.jwt.JwtApplication.main(JwtApplication.java:10) ~[main/:na]
+Caused by: org.hibernate.AnnotationException: Collection 'com.example.jwt.domain.teaType.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.hibernate.boot.model.internal.CollectionBinder.isReversePropertyInJoin(CollectionBinder.java:1622) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.noAssociationTable(CollectionBinder.java:1636) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:1597) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder$1.secondPass(CollectionBinder.java:1588) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:45) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1815) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1774) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 16 common frames omitted
+
+2024-09-23T19:44:16.720+02:00  INFO 13981 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 13981 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:44:16.723+02:00  INFO 13981 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:44:17.081+02:00  INFO 13981 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:44:17.133+02:00  INFO 13981 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:44:17.453+02:00  INFO 13981 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:44:17.459+02:00  INFO 13981 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:44:17.460+02:00  INFO 13981 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:44:17.488+02:00  INFO 13981 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:44:17.488+02:00  INFO 13981 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 742 ms
+2024-09-23T19:44:17.577+02:00  INFO 13981 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:44:17.603+02:00  INFO 13981 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:44:17.619+02:00  INFO 13981 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:44:17.730+02:00  INFO 13981 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:44:17.744+02:00  INFO 13981 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:44:17.825+02:00  INFO 13981 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@13aed42b
+2024-09-23T19:44:17.826+02:00  INFO 13981 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:44:17.967+02:00 ERROR 13981 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:44:17.968+02:00  WARN 13981 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:44:17.968+02:00  INFO 13981 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:44:17.977+02:00  INFO 13981 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:44:17.978+02:00  INFO 13981 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-23T19:44:17.986+02:00  INFO 13981 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-23T19:44:17.994+02:00 ERROR 13981 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) ~[spring-boot-3.2.1.jar:3.2.1]
+	at com.example.jwt.JwtApplication.main(JwtApplication.java:10) ~[main/:na]
+Caused by: org.hibernate.AnnotationException: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.hibernate.boot.model.internal.CollectionBinder.isReversePropertyInJoin(CollectionBinder.java:1622) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.noAssociationTable(CollectionBinder.java:1636) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:1597) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder$1.secondPass(CollectionBinder.java:1588) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:45) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1815) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1774) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 16 common frames omitted
+
+2024-09-23T19:45:44.768+02:00  INFO 14273 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 14273 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:45:44.769+02:00  INFO 14273 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:45:45.126+02:00  INFO 14273 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:45:45.180+02:00  INFO 14273 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:45:45.510+02:00  INFO 14273 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:45:45.516+02:00  INFO 14273 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:45:45.516+02:00  INFO 14273 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:45:45.545+02:00  INFO 14273 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:45:45.545+02:00  INFO 14273 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 752 ms
+2024-09-23T19:45:45.630+02:00  INFO 14273 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:45:45.657+02:00  INFO 14273 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:45:45.673+02:00  INFO 14273 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:45:45.787+02:00  INFO 14273 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:45:45.801+02:00  INFO 14273 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:45:45.881+02:00  INFO 14273 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@12cd129c
+2024-09-23T19:45:45.882+02:00  INFO 14273 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:45:46.025+02:00 ERROR 14273 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:45:46.025+02:00  WARN 14273 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:45:46.025+02:00  INFO 14273 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:45:46.032+02:00  INFO 14273 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:45:46.034+02:00  INFO 14273 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-23T19:45:46.041+02:00  INFO 14273 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-23T19:45:46.050+02:00 ERROR 14273 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) ~[spring-boot-3.2.1.jar:3.2.1]
+	at com.example.jwt.JwtApplication.main(JwtApplication.java:10) ~[main/:na]
+Caused by: org.hibernate.AnnotationException: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.hibernate.boot.model.internal.CollectionBinder.isReversePropertyInJoin(CollectionBinder.java:1622) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.noAssociationTable(CollectionBinder.java:1636) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:1597) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder$1.secondPass(CollectionBinder.java:1588) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:45) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1815) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1774) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 16 common frames omitted
+
+2024-09-23T19:47:53.193+02:00  INFO 14596 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 14596 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:47:53.197+02:00  INFO 14596 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:47:53.563+02:00  INFO 14596 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:47:53.616+02:00  INFO 14596 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:47:53.938+02:00  INFO 14596 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:47:53.944+02:00  INFO 14596 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:47:53.945+02:00  INFO 14596 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:47:53.973+02:00  INFO 14596 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:47:53.973+02:00  INFO 14596 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 753 ms
+2024-09-23T19:47:54.059+02:00  INFO 14596 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:47:54.089+02:00  INFO 14596 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:47:54.105+02:00  INFO 14596 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:47:54.216+02:00  INFO 14596 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:47:54.229+02:00  INFO 14596 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:47:54.310+02:00  INFO 14596 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@53bb71e5
+2024-09-23T19:47:54.311+02:00  INFO 14596 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:47:54.448+02:00 ERROR 14596 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:47:54.449+02:00  WARN 14596 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:47:54.449+02:00  INFO 14596 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:47:54.462+02:00  INFO 14596 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:47:54.464+02:00  INFO 14596 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-23T19:47:54.471+02:00  INFO 14596 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-23T19:47:54.482+02:00 ERROR 14596 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) ~[spring-boot-3.2.1.jar:3.2.1]
+	at com.example.jwt.JwtApplication.main(JwtApplication.java:10) ~[main/:na]
+Caused by: org.hibernate.AnnotationException: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.hibernate.boot.model.internal.CollectionBinder.isReversePropertyInJoin(CollectionBinder.java:1622) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.noAssociationTable(CollectionBinder.java:1636) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:1597) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder$1.secondPass(CollectionBinder.java:1588) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:45) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1815) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1774) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 16 common frames omitted
+
+2024-09-23T19:53:37.080+02:00  INFO 15276 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 15276 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:53:37.081+02:00  INFO 15276 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:53:37.440+02:00  INFO 15276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:53:37.493+02:00  INFO 15276 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:53:37.819+02:00  INFO 15276 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:53:37.825+02:00  INFO 15276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:53:37.826+02:00  INFO 15276 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:53:37.854+02:00  INFO 15276 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:53:37.854+02:00  INFO 15276 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 745 ms
+2024-09-23T19:53:37.943+02:00  INFO 15276 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:53:37.968+02:00  INFO 15276 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:53:37.983+02:00  INFO 15276 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:53:38.095+02:00  INFO 15276 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:53:38.107+02:00  INFO 15276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:53:38.190+02:00  INFO 15276 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@38f617f4
+2024-09-23T19:53:38.191+02:00  INFO 15276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:53:38.332+02:00 ERROR 15276 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:53:38.332+02:00  WARN 15276 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+2024-09-23T19:53:38.332+02:00  INFO 15276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:53:38.342+02:00  INFO 15276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:53:38.343+02:00  INFO 15276 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-23T19:53:38.350+02:00  INFO 15276 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-09-23T19:53:38.359+02:00 ERROR 15276 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) ~[spring-boot-3.2.1.jar:3.2.1]
+	at com.example.jwt.JwtApplication.main(JwtApplication.java:10) ~[main/:na]
+Caused by: org.hibernate.AnnotationException: Collection 'com.example.jwt.domain.teaSort.TeaSort.teas' is 'mappedBy' a property named 'teaType' which does not exist in the target entity 'com.example.jwt.domain.tea.Tea'
+	at org.hibernate.boot.model.internal.CollectionBinder.isReversePropertyInJoin(CollectionBinder.java:1622) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.noAssociationTable(CollectionBinder.java:1636) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder.bindStarToManySecondPass(CollectionBinder.java:1597) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionBinder$1.secondPass(CollectionBinder.java:1588) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.internal.CollectionSecondPass.doSecondPass(CollectionSecondPass.java:45) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1815) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.processSecondPasses(InFlightMetadataCollectorImpl.java:1774) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:332) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 16 common frames omitted
+
+2024-09-23T19:56:08.926+02:00  INFO 15649 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 15649 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:56:08.927+02:00  INFO 15649 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:56:09.275+02:00  INFO 15649 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:56:09.328+02:00  INFO 15649 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:56:09.654+02:00  INFO 15649 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:56:09.660+02:00  INFO 15649 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:56:09.661+02:00  INFO 15649 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:56:09.689+02:00  INFO 15649 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:56:09.689+02:00  INFO 15649 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 740 ms
+2024-09-23T19:56:09.774+02:00  INFO 15649 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:56:09.800+02:00  INFO 15649 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:56:09.816+02:00  INFO 15649 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:56:09.928+02:00  INFO 15649 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:56:09.942+02:00  INFO 15649 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:56:10.021+02:00  INFO 15649 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e2c6702
+2024-09-23T19:56:10.022+02:00  INFO 15649 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:56:10.615+02:00  INFO 15649 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T19:56:10.809+02:00  INFO 15649 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:56:11.140+02:00  WARN 15649 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T19:56:11.317+02:00  INFO 15649 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c399d4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@726dd367, org.springframework.security.web.context.SecurityContextHolderFilter@35bf6dba, org.springframework.security.web.header.HeaderWriterFilter@45649467, org.springframework.web.filter.CorsFilter@433362e0, org.springframework.security.web.authentication.logout.LogoutFilter@13f10967, com.example.jwt.core.security.CustomAuthenticationFilter@425a5c2e, com.example.jwt.core.security.CustomAuthorizationFilter@58cd6088, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ebf9c2d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@753c7411, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@44a7661d, org.springframework.security.web.session.SessionManagementFilter@620e0d36, org.springframework.security.web.access.ExceptionTranslationFilter@6fd07a56, org.springframework.security.web.access.intercept.AuthorizationFilter@3ba50851]
+2024-09-23T19:56:11.608+02:00  INFO 15649 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-09-23T19:56:11.615+02:00  INFO 15649 --- [main] com.example.jwt.JwtApplication           : Started JwtApplication in 2.909 seconds (process running for 3.073)
+2024-09-23T19:56:19.938+02:00  INFO 15649 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:56:19.939+02:00  INFO 15649 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:56:19.941+02:00  INFO 15649 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-23T19:56:45.447+02:00  INFO 15871 --- [main] com.example.jwt.JwtApplication           : Starting JwtApplication using Java 17.0.12 with PID 15871 (/home/kristian/Schreibtisch/M183_L/Modul_183_backend/build/classes/java/main started by kristian in /home/kristian/Schreibtisch/M183_L/Modul_183_backend)
+2024-09-23T19:56:45.448+02:00  INFO 15871 --- [main] com.example.jwt.JwtApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-09-23T19:56:45.870+02:00  INFO 15871 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23T19:56:45.921+02:00  INFO 15871 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 8 JPA repository interfaces.
+2024-09-23T19:56:46.245+02:00  INFO 15871 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-23T19:56:46.253+02:00  INFO 15871 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-23T19:56:46.253+02:00  INFO 15871 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-09-23T19:56:46.282+02:00  INFO 15871 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-23T19:56:46.282+02:00  INFO 15871 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 803 ms
+2024-09-23T19:56:46.372+02:00  INFO 15871 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23T19:56:46.397+02:00  INFO 15871 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-09-23T19:56:46.413+02:00  INFO 15871 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-23T19:56:46.522+02:00  INFO 15871 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23T19:56:46.535+02:00  INFO 15871 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-23T19:56:46.618+02:00  INFO 15871 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@28cb86b2
+2024-09-23T19:56:46.619+02:00  INFO 15871 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-23T19:56:47.216+02:00  INFO 15871 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23T19:56:47.391+02:00  INFO 15871 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:56:47.738+02:00  WARN 15871 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23T19:56:47.911+02:00  INFO 15871 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@192b76a4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d96a895, org.springframework.security.web.context.SecurityContextHolderFilter@1ebb36df, org.springframework.security.web.header.HeaderWriterFilter@22a8e87b, org.springframework.web.filter.CorsFilter@309b8144, org.springframework.security.web.authentication.logout.LogoutFilter@54d9b23a, com.example.jwt.core.security.CustomAuthenticationFilter@70c99e13, com.example.jwt.core.security.CustomAuthorizationFilter@321558f8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46c61d1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c194c4e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a9f8c2f, org.springframework.security.web.session.SessionManagementFilter@6bed434d, org.springframework.security.web.access.ExceptionTranslationFilter@e7ddf8d, org.springframework.security.web.access.intercept.AuthorizationFilter@6de2344a]
+2024-09-23T19:56:48.148+02:00  INFO 15871 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-09-23T19:56:48.154+02:00  INFO 15871 --- [main] com.example.jwt.JwtApplication           : Started JwtApplication in 3.016 seconds (process running for 3.254)
+2024-09-23T19:56:56.279+02:00  INFO 15871 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23T19:56:56.280+02:00  INFO 15871 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-23T19:56:56.282+02:00  INFO 15871 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

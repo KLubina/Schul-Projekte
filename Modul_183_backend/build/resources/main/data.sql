@@ -15,31 +15,31 @@ INSERT INTO role_authority (role_id, authority_id) VALUES ('d290f1ee-6c54-4b01-9
 INSERT INTO role_authority (role_id, authority_id) VALUES ('d290f1ee-6c54-4b01-90e6-d701748f0851', '9b7169f8-133f-4c5c-8362-38be0361f662');
 INSERT INTO role_authority (role_id, authority_id) VALUES ('d290f1ee-6c54-4b01-90e6-d701748f0851', '17f95b57-1cf4-4976-9308-5c110d8ec7f3');
 
--- Insert TeaTypes
+-- Insert Tea Sorts
 INSERT INTO tea_type (id, name, min_Age) VALUES ('d5f54d93-0fd5-4e43-962f-3945a54c1b95', 'White', 0);
 INSERT INTO tea_type (id, name, min_Age) VALUES ('a8e4c127-080e-4b93-b0f4-cc0c9f167f42', 'Green', 0);
 INSERT INTO tea_type (id, name, min_Age) VALUES ('fbf85e74-6e12-4f7c-8444-66a22be9e2fb', 'Medical Herbs', 18);
 
--- Insert Teas for 'White' TeaType
+-- Insert Teas for 'White' Tea Sort
 INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
-VALUES ('a9d5e2cb-b4d7-48f3-b94f-e3c487789527', 'Silver Needle', 10, 15, 'd5f54d93-0fd5-4e43-962f-3945a54c1b95', '2023-09-15');
+VALUES ('a9d5e2cb-b4d7-48f3-b94f-e3c487789527', 'Master', 8, 16, 'd5f54d93-0fd5-4e43-962f-3945a54c1b95', '2023-09-15');
 
 INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
-VALUES ('f94613b9-8af3-4722-bc6c-1b78e3d4b5d3', 'White Peony', 8, 12, 'd5f54d93-0fd5-4e43-962f-3945a54c1b95', '2023-07-12');
+VALUES ('f94613b9-8af3-4722-bc6c-1b78e3d4b5d3', 'Student', 4, 12, 'd5f54d93-0fd5-4e43-962f-3945a54c1b95', '2023-07-12');
 
--- Insert Teas for 'Green' TeaType
+-- Insert Teas for 'Green' Tea Sort
 INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
-VALUES ('295b516f-22d1-4f88-a5c3-50e918b27f35', 'Dragon Well', 5, 9, 'a8e4c127-080e-4b93-b0f4-cc0c9f167f42', '2023-08-22');
-
-INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
-VALUES ('a0b59748-8e7b-4eb8-9be2-8e97e5a4ac4e', 'Sencha', 6, 10, 'a8e4c127-080e-4b93-b0f4-cc0c9f167f42', '2023-08-05');
-
--- Insert Teas for 'Medical Herbs' TeaType
-INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
-VALUES ('c4b8cfa6-57ae-4d75-b686-b7fc0b1ef890', 'Chamomile', 3, 7, 'fbf85e74-6e12-4f7c-8444-66a22be9e2fb', '2023-06-25');
+VALUES ('295b516f-22d1-4f88-a5c3-50e918b27f35', 'Beginner', 4, 8, 'a8e4c127-080e-4b93-b0f4-cc0c9f167f42', '2023-08-22');
 
 INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
-VALUES ('f2467ec9-1c41-4d8b-b168-734d2f34580b', 'Peppermint', 4, 8, 'fbf85e74-6e12-4f7c-8444-66a22be9e2fb', '2023-05-30');
+VALUES ('a0b59748-8e7b-4eb8-9be2-8e97e5a4ac4e', 'Pro', 6, 10, 'a8e4c127-080e-4b93-b0f4-cc0c9f167f42', '2023-08-05');
+
+-- Insert Teas for 'Medical Herbs' Tea Sort
+INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
+VALUES ('c4b8cfa6-57ae-4d75-b686-b7fc0b1ef890', 'Starter', 4, 8, 'fbf85e74-6e12-4f7c-8444-66a22be9e2fb', '2023-06-25');
+
+INSERT INTO tea (id, name, buy_price, sell_price, tea_type_id, harvest_date)
+VALUES ('f2467ec9-1c41-4d8b-b168-734d2f34580b', 'Experienced', 6, 10, 'fbf85e74-6e12-4f7c-8444-66a22be9e2fb', '2023-05-30');
 
 -- Insert Rank 'Silver'
 INSERT INTO rank (id, title, seeds_needed, reduction)
