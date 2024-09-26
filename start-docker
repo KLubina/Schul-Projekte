@@ -1,0 +1,7 @@
+stian@kristian-ideacentre-510S-07ICK:~/Schreibtisch/M183_L/Modul_183_backend$ docker stop my-postgres-container 
+my-postgres-container
+kristian@kristian-ideacentre-510S-07ICK:~/Schreibtisch/M183_L/Modul_183_backend$ docker rm my-postgres-container 
+my-postgres-container
+kristian@kristian-ideacentre-510S-07ICK:~/Schreibtisch/M183_L/Modul_183_backend$ docker run --name my-postgres-container -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -p 5432:5432 -d postgres
+a913b1771cdb1c6a15e1a1bdbfcb4fe5054cd038a156e6fa2cc2e6dd7f8ce0dd
+kristian@kristian-ideacentre-510S-07ICK:~/Schreibtisch/M183_L/Modul_183_backend$ 
