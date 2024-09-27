@@ -1,0 +1,190 @@
+Die Realisierung der ersten drei Blöcke in Ihrem Projekt umfasste die Implementierung und Optimierung wesentlicher Komponenten zur Sicherstellung einer robusten Sicherheitsinfrastruktur, einer effizienten Produktverwaltung und eines zuverlässigen Bestellsystems. Diese Blöcke wurden durch gezielte Anpassungen und Erweiterungen in den folgenden Klassen realisiert:
+
+    WebSecurityConfig
+    ProductController
+    RankRepository
+    OrderDTO
+    Tea
+    TeaType
+
+Im Folgenden wird detailliert beschrieben, wie diese Blöcke umgesetzt wurden, welche spezifischen Änderungen in den jeweiligen Klassen vorgenommen wurden und wie diese Änderungen zur Funktionalität und Sicherheit des gesamten Systems beitragen.
+Block 1: Sicherheitskonfiguration – WebSecurityConfig
+
+Klasse: WebSecurityConfig
+
+Die Klasse WebSecurityConfig ist das Herzstück der Sicherheitsarchitektur Ihrer Anwendung. Sie konfiguriert die Sicherheitsfilterkette, die Authentifizierungs- und Autorisierungsprozesse steuert.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Configuration, @EnableMethodSecurity und @EnableJpaAuditing: Diese Annotationen markieren die Klasse als Konfigurationsklasse, aktivieren die methodenbasierte Sicherheit und die JPA-Auditing-Funktionalitäten.
+        @RequiredArgsConstructor: Diese Lombok-Annotation generiert automatisch einen Konstruktor mit allen final Feldern. Dadurch entfällt die Notwendigkeit, den Konstruktor manuell zu schreiben und die @Autowired-Annotation zu verwenden.
+        @Slf4j: Fügt ein Logger-Objekt (log) hinzu, das für das Logging von Informationen und Debug-Nachrichten genutzt wird.
+
+    Konfigurationsmethoden:
+        filterChain(HttpSecurity http): Diese Methode definiert die Sicherheitsfilterkette. Sie erlaubt öffentliche Zugriffe auf die Endpunkte /users/login und /users/register, während alle anderen Anfragen authentifiziert sein müssen.
+        corsConfigurationSource(): Konfiguriert die CORS-Einstellungen, um Anfragen aus verschiedenen Ursprüngen zu erlauben.
+        authenticationManager(): Definiert den AuthenticationManager mit einem DaoAuthenticationProvider, der UserService zur Benutzerverwaltung und BCryptPasswordEncoder zur Passwortverschlüsselung verwendet.
+
+Warum und wie es funktioniert:
+
+    Sicherheitsfilterkette: Durch die Konfiguration der Sicherheitsfilterkette wird sichergestellt, dass nur authentifizierte Benutzer auf geschützte Ressourcen zugreifen können. Öffentliche Endpunkte wie Registrierung und Login sind frei zugänglich.
+    JWT-Integration: Die Hinzufügung von CustomAuthenticationFilter und CustomAuthorizationFilter ermöglicht die Verwendung von JWTs (JSON Web Tokens) zur sicheren Authentifizierung und Autorisierung.
+    Session Management: Durch die Einstellung SessionCreationPolicy.STATELESS wird die Anwendung auf eine zustandslose Architektur umgestellt, was besonders für RESTful APIs von Vorteil ist.
+    CORS-Einstellungen: Ermöglichen den sicheren Austausch von Ressourcen zwischen unterschiedlichen Ursprüngen, was für moderne Webanwendungen essentiell ist.
+
+Block 2: Produktverwaltung – ProductController, Tea und TeaType
+
+Klasse: ProductController
+
+Der ProductController ist verantwortlich für die Verwaltung und Bereitstellung von Tee-Produkten in der Anwendung.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @RestController, @RequestMapping("/products"), @RequiredArgsConstructor und @Slf4j: Diese Annotationen definieren die Klasse als REST-Controller, setzen den Basis-Pfad für Anfragen, generieren einen Konstruktor mit final Feldern und fügen ein Logger-Objekt hinzu.
+
+    Endpunkt-Definition:
+        getAllTeas(): Ein GET-Endpunkt, der alle verfügbaren Tees zurückgibt. Die Methode verwendet TeaService, um die Teedaten abzurufen und gibt sie als Liste von TeaDTO-Objekten zurück.
+
+Warum und wie es funktioniert:
+
+    Klar strukturierte API-Endpunkte: Der ProductController stellt eine klare und leicht zugängliche API zur Verfügung, die es ermöglicht, alle verfügbaren Tees abzurufen. Dies ist entscheidend für die Frontend-Komponenten, die diese Daten anzeigen.
+    Logging: Durch die Verwendung von log.info() und log.debug() wird der Ablauf der Anfragen und die Anzahl der zurückgegebenen Tees protokolliert, was die Überwachung und Fehlerbehebung erleichtert.
+
+Klasse: Tea
+
+Die Klasse Tea repräsentiert die Tee-Entität in Ihrer Anwendung und ist mit der Datenbank verknüpft.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Data, @NoArgsConstructor, @AllArgsConstructor und @Builder: Diese Annotationen generieren Getter, Setter, toString(), equals() und hashCode() Methoden, sowie Konstruktoren und ein Builder-Pattern zur Erstellung von Tea-Objekten.
+
+    Beziehungsdefinition:
+        @ManyToOne mit @JoinColumn(name = "tea_type_id", nullable = false): Definiert die Beziehung zwischen Tea und TeaType, wobei jeder Tee einem bestimmten Tee-Typ zugeordnet ist.
+
+Warum und wie es funktioniert:
+
+    Entitätsbeziehungen: Die Tea-Klasse ist mit der TeaType-Klasse verknüpft, was die Kategorisierung der Tees nach Typen ermöglicht (z.B. "Grüntee", "Schwarztee", "Medizinische Kräuter").
+    Builder-Pattern: Ermöglicht eine flexible und lesbare Erstellung von Tea-Objekten, was besonders nützlich beim Testen und bei der Objektinitialisierung ist.
+
+Klasse: TeaType
+
+Die Klasse TeaType definiert verschiedene Typen von Tee, die in der Anwendung verfügbar sind.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Data, @NoArgsConstructor, @AllArgsConstructor und @Builder: Ähnliche Vorteile wie bei der Tea-Klasse zur Reduzierung von Boilerplate-Code und zur Verbesserung der Lesbarkeit.
+
+Warum und wie es funktioniert:
+
+    Kategorisierung: Durch die Definition von Tee-Typen können Benutzer die Tees nach ihren Präferenzen filtern und durchsuchen.
+    Konsistente Datenstruktur: Die Verwendung von Lombok gewährleistet eine konsistente und wartbare Datenstruktur für die Tee-Typen.
+
+Block 3: Bestellverwaltung – OrderDTO, RankRepository, OrderService und zugehörige Klassen
+
+Klasse: OrderDTO
+
+OrderDTO ist ein Data Transfer Object, das die Datenstruktur für Bestellungen darstellt, die zwischen Client und Server ausgetauscht werden.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Data, @NoArgsConstructor, @AllArgsConstructor und @Builder: Diese Annotationen generieren automatisch Getter, Setter, toString(), equals() und hashCode() Methoden, sowie Konstruktoren und ein Builder-Pattern.
+
+    Validierungsanmerkungen:
+        @NotBlank für teaName: Sicherstellt, dass der Tee-Name nicht leer oder nur aus Leerzeichen besteht.
+        @NotNull und @Min(1) für amount: Stellen sicher, dass die bestellte Menge nicht null ist und mindestens 1 Gramm beträgt.
+
+Warum und wie es funktioniert:
+
+    Datenintegrität: Durch die Validierungsanmerkungen wird sichergestellt, dass nur gültige Bestellungen verarbeitet werden, was die Datenintegrität und Anwendungssicherheit erhöht.
+    Flexibilität und Lesbarkeit: Das Builder-Pattern ermöglicht eine flexible und lesbare Erstellung von OrderDTO-Objekten, was besonders bei der Erstellung von Testdaten oder der Verarbeitung komplexer Anfragen hilfreich ist.
+
+Klasse: RankRepository
+
+RankRepository ist ein Repository-Interface, das den Zugriff auf Rank-Entitäten in der Datenbank ermöglicht.
+
+Änderungen und Implementierungen:
+
+    Verwendung von JavaDoc-Kommentaren:
+        Klassen- und Methodenkommentare: Beschreiben die Verantwortlichkeiten des Repositories und die spezifischen Abfragemethoden, die bereitgestellt werden.
+
+    Methoden-Definition:
+        findByTitle(String title): Findet einen Rank basierend auf dessen Titel.
+        findFirstBySeedsNeededLessThanEqualOrderBySeedsNeededDesc(int seeds): Findet den höchsten Rank, der mit einer gegebenen Anzahl von Seeds erreicht werden kann.
+
+Warum und wie es funktioniert:
+
+    Spezifische Abfragen: Diese Methoden ermöglichen es, Ränge basierend auf unterschiedlichen Kriterien zu finden, was die Flexibilität der Anwendung bei der Verwaltung von Benutzer-Rängen erhöht.
+    Dokumentation: Die JavaDoc-Kommentare verbessern die Verständlichkeit und Wartbarkeit des Codes, insbesondere für Entwickler, die neu im Projekt sind.
+
+Klasse: OrderService
+
+Der OrderService verwaltet die Geschäftslogik rund um Bestellungen, einschließlich der Speicherung von Bestellungen und dem Abrufen von Bestellhistorien.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @RequiredArgsConstructor und @Slf4j: Generieren einen Konstruktor mit final Feldern und fügen ein Logger-Objekt hinzu.
+
+    Methoden-Optimierung:
+        save(Order order): Speichert eine neue Bestellung im Repository und loggt den Vorgang.
+        getOrdersForUser(User user): Ruft alle Bestellungen eines bestimmten Benutzers ab, konvertiert sie in UserOrderDTO-Objekte und loggt den Vorgang.
+        convertToUserOrderDTO(Order order): Eine private Hilfsmethode zur Konvertierung von Order-Entitäten in UserOrderDTO-Objekte.
+
+Warum und wie es funktioniert:
+
+    Geschäftslogik-Kapselung: Der OrderService isoliert die Geschäftslogik von den Controllern und Repositories, was die Testbarkeit und Wartbarkeit erhöht.
+    Logging: Durch das Protokollieren von Speicher- und Abrufvorgängen können Entwickler den Ablauf besser nachvollziehen und Fehler schneller identifizieren.
+    DTO-Konvertierung: Die Verwendung von DTOs ermöglicht eine klare Trennung zwischen den Datenstrukturen, die zwischen Client und Server ausgetauscht werden, und den internen Entitäten der Anwendung.
+
+Zusammenwirken der Komponenten im Gesamtsystem
+
+Die realisierten Blöcke interagieren nahtlos miteinander, um eine sichere, effiziente und benutzerfreundliche Anwendung zu gewährleisten:
+
+    Sicherheitskonfiguration (WebSecurityConfig):
+        Definiert die Sicherheitsregeln und Filter, die für den Schutz der Anwendung sorgen.
+        Verwendet UserService zur Verwaltung der Benutzer und JwtProperties zur Konfiguration von JWTs.
+
+    Produktverwaltung (ProductController, Tea, TeaType):
+        ProductController stellt Endpunkte bereit, über die Benutzer Informationen zu verfügbaren Tees abrufen können.
+        Tea und TeaType definieren die Datenstrukturen und Beziehungen, die für die Kategorisierung und Verwaltung der Tees notwendig sind.
+
+    Bestellverwaltung (OrderDTO, RankRepository, OrderService):
+        OrderDTO dient als Schnittstelle für die Datenübertragung bei Bestellungen.
+        OrderService verarbeitet die Bestellungen, verwaltet die Geschäftslogik und interagiert mit RankRepository, um Benutzer-Ränge basierend auf ihren Seeds zu aktualisieren.
+        RankRepository ermöglicht den Zugriff auf Ränge in der Datenbank, was für die dynamische Anpassung der Benutzer-Ränge essentiell ist.
+
+Beispielhafter Ablauf einer Bestellung:
+
+    Benutzerregistrierung und Authentifizierung:
+        Ein neuer Benutzer registriert sich über den Endpunkt /users/register und authentifiziert sich anschließend über /users/login.
+        Nach erfolgreicher Authentifizierung erhält der Benutzer ein JWT, das für die Autorisierung bei weiteren Anfragen verwendet wird.
+
+    Abrufen von Tees:
+        Der Benutzer kann über den Endpunkt /products alle verfügbaren Tees abrufen, die durch den ProductController bereitgestellt werden.
+
+    Aufgeben einer Bestellung:
+        Der Benutzer gibt eine Bestellung über den Endpunkt /orders auf, wobei ein OrderDTO-Objekt gesendet wird.
+        OrderController empfängt die Bestellung, validiert sie und übergibt sie an OrderService.
+        OrderService speichert die Bestellung, berechnet gegebenenfalls Rabatte basierend auf dem Benutzer-Rang und aktualisiert die Seeds des Benutzers.
+        RankRepository wird verwendet, um zu prüfen, ob der Benutzer einen höheren Rang erreichen kann, basierend auf seinen gesammelten Seeds.
+
+    Bestellhistorie abrufen:
+        Der Benutzer kann über den Endpunkt /orders/my-orders seine Bestellhistorie abrufen, die durch den OrderService bereitgestellt wird.
+
+Vorteile der umgesetzten Architektur:
+
+    Modularität und Klarheit: Jede Komponente (Controller, Service, Repository) hat klar definierte Verantwortlichkeiten, was die Wartung und Erweiterung des Systems erleichtert.
+    Sicherheitsstärke: Durch die umfassende Sicherheitskonfiguration wird die Anwendung vor unautorisierten Zugriffen geschützt und stellt sicher, dass sensible Daten sicher verarbeitet werden.
+    Datenintegrität und Validierung: Die Verwendung von DTOs mit Validierungsanmerkungen stellt sicher, dass nur korrekte und vollständige Daten verarbeitet werden, wodurch Fehler und Sicherheitslücken minimiert werden.
+    Effiziente Datenverwaltung: Die Nutzung von Repositories zur Datenbankinteraktion gewährleistet eine effiziente und zuverlässige Verwaltung der Daten, während Services die Geschäftslogik kapseln und organisieren.
+
+Schlussfolgerung
+
+Die Realisierung der ersten drei Blöcke Ihres Projekts hat eine solide Grundlage für eine sichere, effiziente und skalierbare Anwendung geschaffen. Durch die gezielte Nutzung von Lombok zur Reduzierung von Boilerplate-Code, die Implementierung klar strukturierter Controller und Services sowie die umfassende Sicherheitskonfiguration wurde ein robustes System entwickelt, das sowohl benutzerfreundlich als auch wartbar ist. Die sorgfältige Dokumentation und strukturierte Implementierung jeder Klasse fördern die Zusammenarbeit im Team und erleichtern zukünftige Erweiterungen und Anpassungen des Systems.
+
+Falls Sie weitere Fragen haben oder zusätzliche Unterstützung benötigen, stehe ich Ihnen gerne zur Verfügung!

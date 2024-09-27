@@ -1,0 +1,447 @@
+Die Realisierung der ersten drei Blöcke in Ihrem Projekt umfasste die Implementierung und Optimierung wesentlicher Komponenten zur Sicherstellung einer robusten Sicherheitsinfrastruktur, einer effizienten Produktverwaltung und eines zuverlässigen Bestellsystems. Diese Blöcke wurden durch gezielte Anpassungen und Erweiterungen mehrerer Schlüsselklassen innerhalb des Projekts realisiert. Im Folgenden wird detailliert beschrieben, welche Änderungen in den jeweiligen Klassen vorgenommen wurden, welche spezifischen Codeabschnitte betroffen waren und wie diese Änderungen zur Funktionalität und Sicherheit des gesamten Systems beitragen.
+Projektstruktur und Übersicht
+
+Zu Beginn des Projekts bestand die Struktur aus mehreren Paketen innerhalb des Hauptverzeichnisses com.example.jwt, die unterschiedliche Verantwortlichkeiten abdeckten. Die relevanten Pakete für die Realisierung der Blöcke 1 bis 3 waren:
+
+    core.security: Beinhaltet Sicherheitskonfigurationen und -filter.
+    domain.product: Verantwortlich für die Produktverwaltung.
+    domain.orders: Verwaltung von Bestellungen und Rängen.
+    domain.rank: Verwaltung der Ränge der Benutzer.
+    domain.user: Benutzerverwaltung einschließlich Authentifizierung und Autorisierung.
+
+Die nachfolgenden Abschnitte erläutern die spezifischen Änderungen in den betroffenen Klassen und deren Zusammenspiel.
+Block 1: Sicherheitskonfiguration – WebSecurityConfig und zugehörige Klassen
+
+Klasse: WebSecurityConfig
+
+Die Klasse WebSecurityConfig ist das Herzstück der Sicherheitsarchitektur Ihrer Anwendung. Sie konfiguriert die Sicherheitsfilterkette, die Authentifizierungs- und Autorisierungsprozesse steuert.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Configuration, @EnableMethodSecurity und @EnableJpaAuditing: Diese Annotationen markieren die Klasse als Konfigurationsklasse, aktivieren die methodenbasierte Sicherheit und die JPA-Auditing-Funktionalitäten.
+        @RequiredArgsConstructor: Generiert automatisch einen Konstruktor mit allen final Feldern. Dadurch entfällt die manuelle Erstellung des Konstruktors und die Verwendung der @Autowired-Annotation wird überflüssig.
+        @Slf4j: Fügt ein Logger-Objekt (log) hinzu, das für das Logging von Informationen und Debug-Nachrichten genutzt wird.
+
+    Konfigurationsmethoden:
+        filterChain(HttpSecurity http): Definiert die Sicherheitsfilterkette. Öffentliche Zugriffe auf die Endpunkte /users/login und /users/register sind erlaubt, während alle anderen Anfragen authentifiziert sein müssen. Zusätzlich werden benutzerdefinierte Authentifizierungs- und Autorisierungsfilter (CustomAuthenticationFilter und CustomAuthorizationFilter) integriert.
+        corsConfigurationSource(): Konfiguriert die CORS-Einstellungen, um Anfragen aus verschiedenen Ursprüngen zu erlauben. Dies ist besonders wichtig für Frontend-Anwendungen, die auf die API zugreifen.
+        authenticationManager(): Definiert den AuthenticationManager mit einem DaoAuthenticationProvider, der UserService zur Benutzerverwaltung und BCryptPasswordEncoder zur Passwortverschlüsselung verwendet.
+
+Konkrete Codeänderungen:
+
+java
+
+@Configuration
+@EnableMethodSecurity
+@EnableJpaAuditing(auditorAwareRef = "userAware")
+@RequiredArgsConstructor
+@Slf4j
+public class WebSecurityConfig {
+
+    private final UserService userService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final JwtProperties jwtProperties;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        log.info("Konfiguriere Sicherheitsfilterkette");
+
+        return http
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST, "/users/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users/register").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .addFilterAfter(
+                        new CustomAuthenticationFilter(
+                                new AntPathRequestMatcher("/users/login", "POST"),
+                                authenticationManager(),
+                                jwtProperties
+                        ),
+                        UsernamePasswordAuthenticationFilter.class
+                )
+                .addFilterAfter(
+                        new CustomAuthorizationFilter(userService, jwtProperties),
+                        UsernamePasswordAuthenticationFilter.class
+                )
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .cors(cors -> cors
+                        .configurationSource(corsConfigurationSource())
+                )
+                .csrf(AbstractHttpConfigurer::disable)
+                .build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        log.info("Konfiguriere CORS");
+
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("*"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        configuration.setExposedHeaders(List.of("Authorization"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager() {
+        log.info("Erstelle AuthenticationManager");
+
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        provider.setUserDetailsService(userService);
+
+        return new ProviderManager(provider);
+    }
+}
+
+Warum und wie es funktioniert:
+
+    Sicherheitsfilterkette: Durch die Konfiguration der Sicherheitsfilterkette wird sichergestellt, dass nur authentifizierte Benutzer auf geschützte Ressourcen zugreifen können. Öffentliche Endpunkte wie Registrierung und Login sind frei zugänglich.
+    JWT-Integration: Die benutzerdefinierten Filter (CustomAuthenticationFilter und CustomAuthorizationFilter) ermöglichen die Verwendung von JWTs (JSON Web Tokens) zur sicheren Authentifizierung und Autorisierung.
+    Session Management: Die Einstellung SessionCreationPolicy.STATELESS macht die Anwendung zustandslos, was besonders für RESTful APIs von Vorteil ist, da keine Sitzungsdaten auf dem Server gespeichert werden.
+    CORS-Einstellungen: Erlauben den sicheren Austausch von Ressourcen zwischen unterschiedlichen Ursprüngen, was für moderne Webanwendungen essentiell ist.
+
+Block 2: Produktverwaltung – ProductController, Tea und TeaType
+
+Klasse: ProductController
+
+Der ProductController ist verantwortlich für die Verwaltung und Bereitstellung von Tee-Produkten in der Anwendung.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @RestController, @RequestMapping("/products"), @RequiredArgsConstructor und @Slf4j: Diese Annotationen definieren die Klasse als REST-Controller, setzen den Basis-Pfad für Anfragen, generieren einen Konstruktor mit final Feldern und fügen ein Logger-Objekt hinzu.
+
+    Endpunkt-Definition:
+        getAllTeas(): Ein GET-Endpunkt, der alle verfügbaren Tees zurückgibt. Die Methode verwendet TeaService, um die Teedaten abzurufen und gibt sie als Liste von TeaDTO-Objekten zurück. Logging-Statements wurden hinzugefügt, um den Ablauf der Anfrage zu protokollieren.
+
+Konkrete Codeänderungen:
+
+java
+
+@RestController
+@RequestMapping("/products")
+@RequiredArgsConstructor
+@Slf4j
+public class ProductController {
+
+    private final TeaService teaService;
+
+    /**
+     * Holt alle verfügbaren Tees.
+     *
+     * @return eine ResponseEntity mit einer Liste von TeaDTO-Objekten
+     */
+    @PreAuthorize("hasAuthority('CAN_RETRIEVE_PRODUCTS')")
+    @GetMapping
+    public ResponseEntity<List<TeaDTO>> getAllTeas() {
+        log.info("Abrufen aller Tees");
+        List<TeaDTO> teas = teaService.getAllTeas();
+        log.debug("Anzahl der abgerufenen Tees: {}", teas.size());
+        return ResponseEntity.ok(teas);
+    }
+}
+
+Warum und wie es funktioniert:
+
+    Klare API-Endpunkte: Der ProductController stellt eine klare und leicht zugängliche API zur Verfügung, die es ermöglicht, alle verfügbaren Tees abzurufen. Dies ist entscheidend für die Frontend-Komponenten, die diese Daten anzeigen.
+    Logging: Durch die Verwendung von log.info() und log.debug() wird der Ablauf der Anfragen und die Anzahl der zurückgegebenen Tees protokolliert, was die Überwachung und Fehlerbehebung erleichtert.
+    Methodensicherheit: Die Annotation @PreAuthorize("hasAuthority('CAN_RETRIEVE_PRODUCTS')") stellt sicher, dass nur autorisierte Benutzer auf diesen Endpunkt zugreifen können.
+
+Klasse: Tea
+
+Die Klasse Tea repräsentiert die Tee-Entität in Ihrer Anwendung und ist mit der Datenbank verknüpft.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Data, @NoArgsConstructor, @AllArgsConstructor und @Builder: Diese Annotationen generieren Getter, Setter, toString(), equals() und hashCode() Methoden sowie Konstruktoren und ein Builder-Pattern zur Erstellung von Tea-Objekten.
+
+    Beziehungsdefinition:
+        @ManyToOne mit @JoinColumn(name = "tea_type_id", nullable = false): Definiert die Beziehung zwischen Tea und TeaType, wobei jeder Tee einem bestimmten Tee-Typ zugeordnet ist.
+        @ToString.Exclude und @EqualsAndHashCode.Exclude: Verhindern rekursive Aufrufe bei bidirektionalen Beziehungen durch Ausschluss bestimmter Felder aus den generierten Methoden.
+
+Konkrete Codeänderungen:
+
+java
+
+@Entity
+@Table(name = "teas")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Tea extends ExtendedEntity {
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "buy_price", nullable = false)
+    private int buyPrice;
+
+    @Column(name = "sell_price", nullable = false)
+    private int sellPrice;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tea_type_id", nullable = false)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private TeaType teaType;
+
+    @Column(name = "harvest_date", nullable = false)
+    private Date harvestDate;
+}
+
+Warum und wie es funktioniert:
+
+    Entitätsbeziehungen: Die Tea-Klasse ist mit der TeaType-Klasse verknüpft, was die Kategorisierung der Tees nach Typen ermöglicht (z.B. "Grüntee", "Schwarztee", "Medizinische Kräuter").
+    Builder-Pattern: Ermöglicht eine flexible und lesbare Erstellung von Tea-Objekten, was besonders nützlich beim Testen und bei der Objektinitialisierung ist.
+    Datenintegrität: Durch die Festlegung von nullable = false in den @JoinColumn- und @Column-Annotationen wird sichergestellt, dass essentielle Felder nicht null sind, was die Datenintegrität in der Datenbank gewährleistet.
+
+Klasse: TeaType
+
+Die Klasse TeaType definiert verschiedene Typen von Tee, die in der Anwendung verfügbar sind.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Data, @NoArgsConstructor, @AllArgsConstructor und @Builder: Ähnliche Vorteile wie bei der Tea-Klasse zur Reduzierung von Boilerplate-Code und zur Verbesserung der Lesbarkeit.
+
+Konkrete Codeänderungen:
+
+java
+
+@Entity
+@Table(name = "tea_types")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class TeaType extends ExtendedEntity {
+
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
+
+    // Weitere Felder und Beziehungen können hier hinzugefügt werden
+}
+
+Warum und wie es funktioniert:
+
+    Kategorisierung: Durch die Definition von Tee-Typen können Benutzer die Tees nach ihren Präferenzen filtern und durchsuchen.
+    Datenkonsistenz: Die Verwendung von unique = true in der @Column-Annotation stellt sicher, dass jeder Tee-Typ einzigartig ist, was Duplikate verhindert.
+    Flexibilität: Das Builder-Pattern ermöglicht eine einfache Erstellung und Verwaltung von TeaType-Objekten, was besonders bei der Initialisierung der Datenbank von Vorteil ist.
+
+Block 3: Bestellverwaltung – OrderDTO, RankRepository, OrderService und zugehörige Klassen
+
+Klasse: OrderDTO
+
+OrderDTO ist ein Data Transfer Object, das die Datenstruktur für Bestellungen darstellt, die zwischen Client und Server ausgetauscht werden.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @Data, @NoArgsConstructor, @AllArgsConstructor und @Builder: Generieren automatisch Getter, Setter, toString(), equals() und hashCode() Methoden sowie Konstruktoren und ein Builder-Pattern zur flexiblen Objekterstellung.
+
+    Validierungsanmerkungen:
+        @NotBlank für teaName: Sicherstellt, dass der Tee-Name nicht leer oder nur aus Leerzeichen besteht.
+        @NotNull und @Min(1) für amount: Stellen sicher, dass die bestellte Menge nicht null ist und mindestens 1 Gramm beträgt.
+
+Konkrete Codeänderungen:
+
+java
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class OrderDTO {
+
+    @NotBlank(message = "Tea name is required")
+    private String teaName;  // Name des Tees
+
+    @NotNull(message = "Amount is required")
+    @Min(value = 1, message = "Amount must be at least 1 gram")
+    private Integer amount;  // Menge in Gramm
+}
+
+Warum und wie es funktioniert:
+
+    Datenintegrität: Durch die Validierungsanmerkungen wird sichergestellt, dass nur gültige Bestellungen verarbeitet werden, was die Datenintegrität und Anwendungssicherheit erhöht.
+    Boilerplate-Reduktion: Lombok-Anmerkungen reduzieren den Bedarf an expliziten Getter-, Setter- und Konstruktor-Methoden, was den Code sauberer und wartbarer macht.
+    Flexibilität und Lesbarkeit: Das Builder-Pattern ermöglicht eine flexible und lesbare Erstellung von OrderDTO-Objekten, was besonders bei der Erstellung von Testdaten oder der Verarbeitung komplexer Anfragen hilfreich ist.
+
+Klasse: RankRepository
+
+RankRepository ist ein Repository-Interface, das den Zugriff auf Rank-Entitäten in der Datenbank ermöglicht.
+
+Änderungen und Implementierungen:
+
+    JavaDoc-Kommentare:
+        Klassen- und Methodenkommentare: Beschreiben die Verantwortlichkeiten des Repositories und die spezifischen Abfragemethoden, die bereitgestellt werden.
+
+    Methoden-Definition:
+        findByTitle(String title): Findet einen Rank basierend auf dessen Titel.
+        findFirstBySeedsNeededLessThanEqualOrderBySeedsNeededDesc(int seeds): Findet den höchsten Rank, der mit einer gegebenen Anzahl von Seeds erreicht werden kann.
+
+Konkrete Codeänderungen:
+
+java
+
+@Repository
+public interface RankRepository extends ExtendedRepository<Rank> {
+
+    /**
+     * Retrieves a Rank entity based on its title.
+     *
+     * @param title the title of the Rank to retrieve
+     * @return an {@link Optional} containing the found Rank, or empty if not found
+     */
+    Optional<Rank> findByTitle(String title);
+
+    /**
+     * Finds the highest Rank that can be achieved with the given number of seeds.
+     *
+     * @param seeds the number of seeds accumulated by the user
+     * @return an {@link Optional} containing the appropriate Rank if available, otherwise empty
+     */
+    Optional<Rank> findFirstBySeedsNeededLessThanEqualOrderBySeedsNeededDesc(int seeds);
+}
+
+Warum und wie es funktioniert:
+
+    Spezifische Abfragen: Diese Methoden ermöglichen es, Ränge basierend auf unterschiedlichen Kriterien zu finden, was die Flexibilität der Anwendung bei der Verwaltung von Benutzer-Rängen erhöht.
+    Dokumentation: Die JavaDoc-Kommentare verbessern die Verständlichkeit und Wartbarkeit des Codes, insbesondere für Entwickler, die neu im Projekt sind.
+    Erweiterbarkeit: Durch die Erweiterung des ExtendedRepository-Interfaces können weitere generische Datenbankoperationen leicht hinzugefügt werden.
+
+Klasse: OrderService
+
+Der OrderService verwaltet die Geschäftslogik rund um Bestellungen, einschließlich der Speicherung von Bestellungen und dem Abrufen von Bestellhistorien.
+
+Änderungen und Implementierungen:
+
+    Verwendung von Lombok-Anmerkungen:
+        @RequiredArgsConstructor und @Slf4j: Generieren einen Konstruktor mit final Feldern und fügen ein Logger-Objekt hinzu.
+
+    Methoden-Optimierung:
+        save(Order order): Speichert eine neue Bestellung im Repository und loggt den Vorgang.
+        getOrdersForUser(User user): Ruft alle Bestellungen eines bestimmten Benutzers ab, konvertiert sie in UserOrderDTO-Objekte und loggt den Vorgang.
+        convertToUserOrderDTO(Order order): Eine private Hilfsmethode zur Konvertierung von Order-Entitäten in UserOrderDTO-Objekte.
+
+Konkrete Codeänderungen:
+
+java
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class OrderService {
+
+    private final OrderRepository orderRepository;
+
+    /**
+     * Speichert eine neue Bestellung.
+     *
+     * @param order die zu speichernde Bestellung
+     * @return die gespeicherte Bestellung
+     */
+    public Order save(Order order) {
+        log.debug("Speichere Bestellung: {}", order);
+        return orderRepository.save(order);
+    }
+
+    /**
+     * Ruft alle Bestellungen für einen bestimmten Benutzer ab.
+     *
+     * @param user der Benutzer, dessen Bestellungen abgerufen werden sollen
+     * @return eine Liste von {@link UserOrderDTO}, die die Bestellungen des Benutzers repräsentiert
+     */
+    public List<UserOrderDTO> getOrdersForUser(User user) {
+        log.debug("Rufe Bestellungen für Benutzer ab: {}", user.getEmail());
+
+        List<Order> orders = orderRepository.findBypId(user.getId());
+
+        return orders.stream()
+                .map(this::convertToUserOrderDTO)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Konvertiert eine {@link Order}-Entität zu einer {@link UserOrderDTO}.
+     *
+     * @param order die zu konvertierende Bestellung
+     * @return das entsprechende {@link UserOrderDTO}
+     */
+    private UserOrderDTO convertToUserOrderDTO(Order order) {
+        return UserOrderDTO.builder()
+                .orderId(order.getId())
+                .teaName(order.getTea().getName())
+                .amountInGrams(order.getAmount())
+                .pricePaid(order.getPricePayed())
+                .orderDate(order.getOrderDate())
+                .build();
+    }
+}
+
+Warum und wie es funktioniert:
+
+    Geschäftslogik-Kapselung: Der OrderService isoliert die Geschäftslogik von den Controllern und Repositories, was die Testbarkeit und Wartbarkeit erhöht.
+    Logging: Durch das Protokollieren von Speicher- und Abrufvorgängen können Entwickler den Ablauf besser nachvollziehen und Fehler schneller identifizieren.
+    DTO-Konvertierung: Die Verwendung von DTOs ermöglicht eine klare Trennung zwischen den Datenstrukturen, die zwischen Client und Server ausgetauscht werden, und den internen Entitäten der Anwendung.
+
+Zusammenwirken der Komponenten im Gesamtsystem
+
+Die realisierten Blöcke interagieren nahtlos miteinander, um eine sichere, effiziente und benutzerfreundliche Anwendung zu gewährleisten:
+
+    Sicherheitskonfiguration (WebSecurityConfig):
+        Definiert die Sicherheitsregeln und Filter, die für den Schutz der Anwendung sorgen.
+        Verwendet UserService zur Verwaltung der Benutzer und JwtProperties zur Konfiguration von JWTs.
+
+    Produktverwaltung (ProductController, Tea, TeaType):
+        ProductController stellt Endpunkte bereit, über die Benutzer Informationen zu verfügbaren Tees abrufen können.
+        Tea und TeaType definieren die Datenstrukturen und Beziehungen, die für die Kategorisierung und Verwaltung der Tees notwendig sind.
+
+    Bestellverwaltung (OrderDTO, RankRepository, OrderService):
+        OrderDTO dient als Schnittstelle für die Datenübertragung bei Bestellungen.
+        OrderService verarbeitet die Bestellungen, verwaltet die Geschäftslogik und interagiert mit RankRepository, um Benutzer-Ränge basierend auf ihren Seeds zu aktualisieren.
+        RankRepository ermöglicht den Zugriff auf Ränge in der Datenbank, was für die dynamische Anpassung der Benutzer-Ränge essentiell ist.
+
+Beispielhafter Ablauf einer Bestellung:
+
+    Benutzerregistrierung und Authentifizierung:
+        Ein neuer Benutzer registriert sich über den Endpunkt /users/register und authentifiziert sich anschließend über /users/login.
+        Nach erfolgreicher Authentifizierung erhält der Benutzer ein JWT, das für die Autorisierung bei weiteren Anfragen verwendet wird.
+
+    Abrufen von Tees:
+        Der Benutzer kann über den Endpunkt /products alle verfügbaren Tees abrufen, die durch den ProductController bereitgestellt werden.
+
+    Aufgeben einer Bestellung:
+        Der Benutzer gibt eine Bestellung über den Endpunkt /orders auf, wobei ein OrderDTO-Objekt gesendet wird.
+        OrderController empfängt die Bestellung, validiert sie und übergibt sie an OrderService.
+        OrderService speichert die Bestellung, berechnet gegebenenfalls Rabatte basierend auf dem Benutzer-Rang und aktualisiert die Seeds des Benutzers.
+        RankRepository wird verwendet, um zu prüfen, ob der Benutzer einen höheren Rang erreichen kann, basierend auf seinen gesammelten Seeds.
+
+    Bestellhistorie abrufen:
+        Der Benutzer kann über den Endpunkt /orders/my-orders seine Bestellhistorie abrufen, die durch den OrderService bereitgestellt wird.
+
+Vorteile der umgesetzten Architektur
+
+    Modularität und Klarheit: Jede Komponente (Controller, Service, Repository) hat klar definierte Verantwortlichkeiten, was die Wartung und Erweiterung des Systems erleichtert.
+    Sicherheitsstärke: Durch die umfassende Sicherheitskonfiguration wird die Anwendung vor unautorisierten Zugriffen geschützt und stellt sicher, dass sensible Daten sicher verarbeitet werden.
+    Datenintegrität und Validierung: Die Verwendung von DTOs mit Validierungsanmerkungen stellt sicher, dass nur korrekte und vollständige Daten verarbeitet werden, wodurch Fehler und Sicherheitslücken minimiert werden.
+    Effiziente Datenverwaltung: Die Nutzung von Repositories zur Datenbankinteraktion gewährleistet eine effiziente und zuverlässige Verwaltung der Daten, während Services die Geschäftslogik kapseln und organisieren.
+    Boilerplate-Reduktion: Durch die Nutzung von Lombok-Anmerkungen wird der Code sauberer und weniger fehleranfällig, was die Entwicklungszeit verkürzt und die Lesbarkeit erhöht.
+
+Abschließende Hinweise
+
+Die Realisierung der ersten drei Blöcke Ihres Projekts hat eine solide Grundlage für eine sichere, effiziente und skalierbare Anwendung geschaffen. Durch die gezielte Nutzung von Lombok zur Reduzierung von Boilerplate-Code, die Implementierung klar strukturierter Controller und Services sowie die umfassende Sicherheitskonfiguration wurde ein robustes System entwickelt, das sowohl benutzerfreundlich als auch wartbar ist. Die sorgfältige Dokumentation und strukturierte Implementierung jeder Klasse fördern die Zusammenarbeit im Team und erleichtern zukünftige Erweiterungen und Anpassungen des Systems.
+
+Falls Sie weitere Fragen haben oder zusätzliche Unterstützung benötigen, stehe ich Ihnen gerne zur Verfügung!
