@@ -1,34 +1,20 @@
 package com.example.jwt.domain.orders.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class OrderDTO {
 
-    @NotNull
+    @NotBlank(message = "Tea name is required")
     private String teaName;  // Name of the tea
-    @NotNull
-    private int amount;  // Amount in grams
 
-    public OrderDTO() {}
-
-    public OrderDTO(String teaName, int amount) {
-        this.teaName = teaName;
-        this.amount = amount;
-    }
-
-    public String getTeaName() {
-        return teaName;
-    }
-
-    public void setTeaName(String teaName) {
-        this.teaName = teaName;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+    @NotNull(message = "Amount is required")
+    @Min(value = 1, message = "Amount must be at least 1 gram")
+    private Integer amount;  // Amount in grams
 }
