@@ -1,0 +1,112 @@
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           └── jwt
+    │   │               ├── core
+    │   │               │   ├── audit
+    │   │               │   │   └── UserAware.java
+    │   │               │   ├── exception
+    │   │               │   │   ├── CustomGlobalExceptionHandler.java
+    │   │               │   │   └── ResponseError.java
+    │   │               │   ├── generic
+    │   │               │   │   ├── ExtendedAuditEntity.java
+    │   │               │   │   ├── ExtendedDTO.java
+    │   │               │   │   ├── ExtendedEntity.java
+    │   │               │   │   ├── ExtendedMapper.java
+    │   │               │   │   ├── ExtendedRepository.java
+    │   │               │   │   ├── ExtendedServiceImpl.java
+    │   │               │   │   └── ExtendedService.java
+    │   │               │   ├── logging
+    │   │               │   │   └── LoggerConfig.java
+    │   │               │   └── security
+    │   │               │       ├── config
+    │   │               │       │   ├── Encoders.java
+    │   │               │       │   └── VaultConfig.java
+    │   │               │       ├── CustomAuthenticationFilter.java
+    │   │               │       ├── CustomAuthorizationFilter.java
+    │   │               │       ├── helpers
+    │   │               │       │   ├── AuthorizationSchemas.java
+    │   │               │       │   ├── Credentials.java
+    │   │               │       │   └── JwtProperties.java
+    │   │               │       ├── permissionevaluators
+    │   │               │       │   └── UserPermissionEvaluator.java
+    │   │               │       ├── validators
+    │   │               │       │   ├── age
+    │   │               │       │   │   ├── AgeValidator.java
+    │   │               │       │   │   └── ValidAge.java
+    │   │               │       │   ├── country
+    │   │               │       │   │   ├── CountryValidator.java
+    │   │               │       │   │   └── ValidCountry.java
+    │   │               │       │   └── link
+    │   │               │       │       ├── Link.java
+    │   │               │       │       └── LinkValidator.java
+    │   │               │       └── WebSecurityConfig.java
+    │   │               ├── domain
+    │   │               │   ├── authority
+    │   │               │   │   ├── Authority.java
+    │   │               │   │   └── dto
+    │   │               │   │       ├── AuthorityDTO.java
+    │   │               │   │       └── AuthorityMapper.java
+    │   │               │   ├── county
+    │   │               │   │   ├── Country.java
+    │   │               │   │   └── CountryRepository.java
+    │   │               │   ├── orders
+    │   │               │   │   ├── dto
+    │   │               │   │   │   ├── OrderDTO.java
+    │   │               │   │   │   └── UserOrderDTO.java
+    │   │               │   │   ├── OrderController.java
+    │   │               │   │   ├── Order.java
+    │   │               │   │   ├── OrderRepository.java
+    │   │               │   │   └── OrderService.java
+    │   │               │   ├── product
+    │   │               │   │   └── ProductController.java
+    │   │               │   ├── rank
+    │   │               │   │   ├── Rank.java
+    │   │               │   │   └── RankRepository.java
+    │   │               │   ├── role
+    │   │               │   │   ├── dto
+    │   │               │   │   │   ├── RoleDTO.java
+    │   │               │   │   │   └── RoleMapper.java
+    │   │               │   │   ├── Role.java
+    │   │               │   │   └── RoleRepository.java
+    │   │               │   ├── tea
+    │   │               │   │   ├── dto
+    │   │               │   │   │   └── TeaDTO.java
+    │   │               │   │   ├── Tea.java
+    │   │               │   │   ├── TeaRepository.java
+    │   │               │   │   ├── TeaServiceImpl.java
+    │   │               │   │   └── TeaService.java
+    │   │               │   ├── teaType
+    │   │               │   │   ├── TeaType.java
+    │   │               │   │   └── TeaTypeRepository.java
+    │   │               │   └── user
+    │   │               │       ├── dto
+    │   │               │       │   ├── UserDTO.java
+    │   │               │       │   ├── UserMapper.java
+    │   │               │       │   └── UserRegisterDTO.java
+    │   │               │       ├── UserController.java
+    │   │               │       ├── UserDetailsImpl.java
+    │   │               │       ├── User.java
+    │   │               │       ├── UserRepository.java
+    │   │               │       ├── UserServiceImpl.java
+    │   │               │       └── UserService.java
+    │   │               └── JwtApplication.java
+    │   └── resources
+    │       ├── application.properties
+    │       ├── data.sql
+    │       ├── messages_de.properties
+    │       ├── messages_en.properties
+    │       ├── messages.properties
+    │       ├── validationMessages_de.properties
+    │       ├── validationMessages_en.properties
+    │       └── validationMessages.properties
+    └── test
+        └── java
+            └── com
+                └── example
+                    └── jwt
+                        └── JwtApplicationTests.java
+
+173 directories, 227 files

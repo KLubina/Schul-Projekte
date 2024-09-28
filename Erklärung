@@ -1,0 +1,310 @@
+Basierend auf der gegebenen Projektordnerstruktur lässt sich nachvollziehen, wie die einzelnen Komponenten zusammenarbeiten, um die Anforderungen des Projekts zu erfüllen. Im Folgenden wird erläutert, welche Rolle die jeweiligen Dateien und Ordner spielen, damit alles wie vorgesehen funktioniert.
+Überblick der Projektstruktur
+
+    src/main/java/com/example/jwt: Enthält den gesamten Java-Quellcode der Anwendung.
+    src/main/resources: Beinhaltet Ressourcen wie Konfigurationsdateien und Internationalisierungsdateien.
+    src/test/java/com/example/jwt: Enthält Testklassen für die Anwendung.
+
+Hauptkomponenten und ihre Funktionen
+1. Hauptanwendung
+
+    JwtApplication.java
+        Startpunkt der Spring Boot Anwendung.
+        Initialisiert die Anwendung und scannt die Komponenten für Dependency Injection.
+
+2. Core-Paket
+
+Enthält grundlegende Komponenten, die in der gesamten Anwendung verwendet werden.
+a. Audit
+
+    UserAware.java
+        Schnittstelle oder Klasse für Auditing-Zwecke.
+        Ermöglicht das Nachverfolgen von Benutzeraktionen, z. B. wer welche Änderungen vorgenommen hat.
+
+b. Exception Handling
+
+    CustomGlobalExceptionHandler.java
+        Behandelt global auftretende Ausnahmen.
+        Sorgt für einheitliche Fehlermeldungen und Statuscodes.
+    ResponseError.java
+        Modelliert die Struktur von Fehlerantworten.
+        Enthält Informationen wie Fehlermeldung, Statuscode und Zeitstempel.
+
+c. Generic
+
+    ExtendedEntity.java, ExtendedDTO.java, ExtendedMapper.java usw.
+        Basisklassen und -schnittstellen für Entitäten, DTOs, Mapper, Repositories und Services.
+        Erlauben Wiederverwendung und konsistente Implementierung von CRUD-Operationen.
+
+d. Logging
+
+    LoggerConfig.java
+        Konfiguriert das Logging der Anwendung.
+        Legt Log-Level und Formate fest.
+
+e. Security
+
+    Konfiguration
+        WebSecurityConfig.java
+            Konfiguriert die Sicherheitsregeln der Webanwendung.
+            Definiert Zugriffsrechte auf Endpunkte basierend auf Rollen und Berechtigungen.
+        Encoders.java
+            Stellt PasswordEncoder-Beans bereit.
+            Wird für die Verschlüsselung von Passwörtern verwendet.
+        VaultConfig.java
+            Integration mit einem Secret-Management-System wie HashiCorp Vault.
+
+    Filter
+        CustomAuthenticationFilter.java
+            Behandelt die Authentifizierung von Benutzern.
+            Generiert JWT-Tokens bei erfolgreicher Anmeldung.
+        CustomAuthorizationFilter.java
+            Überprüft JWT-Tokens bei jeder Anfrage.
+            Gewährleistet, dass nur authentifizierte und autorisierte Benutzer auf bestimmte Ressourcen zugreifen können.
+
+    Helferklassen
+        AuthorizationSchemas.java
+            Definiert verschiedene Autorisierungsschemata.
+        Credentials.java
+            Modelliert Anmeldedaten (Benutzername und Passwort).
+        JwtProperties.java
+            Konfigurationseigenschaften für JWT (z. B. Geheimschlüssel, Ablaufzeit).
+
+    Permission Evaluators
+        UserPermissionEvaluator.java
+            Implementiert benutzerdefinierte Berechtigungslogik.
+            Erlaubt fein granulare Zugriffskontrolle basierend auf Benutzerattributen.
+
+    Validatoren
+
+        Alter
+            AgeValidator.java und ValidAge.java
+                Validieren das Alter eines Benutzers.
+                Stellen sicher, dass bestimmte Aktionen nur von Benutzern eines bestimmten Alters durchgeführt werden können.
+
+        Nationalität
+            CountryValidator.java und ValidCountry.java
+                Validieren die Nationalität eines Benutzers.
+                Einschränkung auf erlaubte Länder.
+
+        Link
+            Link.java und LinkValidator.java
+                Validieren URLs oder Links, die vom Benutzer eingegeben werden.
+
+3. Domain-Paket
+
+Enthält die Geschäftslogik und die Modellierung der Daten.
+a. Authority (Berechtigungen)
+
+    Authority.java
+        Repräsentiert eine spezifische Berechtigung, z. B. CAN_PLACE_ORDER.
+
+    DTO und Mapper
+        AuthorityDTO.java und AuthorityMapper.java
+            Dienen der Datenübertragung zwischen Schichten.
+            Mapper konvertiert zwischen Entität und DTO.
+
+b. Country (Land)
+
+    Country.java
+        Repräsentiert ein Land bzw. eine Nationalität.
+    CountryRepository.java
+        Datenzugriffsschicht für Länder.
+
+c. Orders (Bestellungen)
+
+    Order.java
+        Modelliert eine Bestellung.
+        Enthält Attribute wie Produkt, Menge, Preis usw.
+
+    DTOs
+        OrderDTO.java und UserOrderDTO.java
+            Datenübertragungsobjekte für Bestellungen.
+
+    OrderController.java
+        Endpunkt für Bestellaktionen.
+
+    OrderRepository.java und OrderService.java
+        Datenzugriff und Geschäftslogik für Bestellungen.
+
+d. Product (Produkte)
+
+    ProductController.java
+        Endpunkt für Produktaktionen.
+        Ermöglicht das Abrufen der verfügbaren Produkte.
+
+e. Rank (Rang)
+
+    Rank.java
+        Repräsentiert den Rang eines Kunden (Silver, Gold, Platinum).
+    RankRepository.java
+        Datenzugriff für Ränge.
+
+f. Role (Rollen)
+
+    Role.java
+        Repräsentiert die Rolle eines Benutzers, z. B. CLIENT.
+
+    DTO und Mapper
+        RoleDTO.java und RoleMapper.java
+            Dienen der Datenübertragung und Konvertierung.
+
+    RoleRepository.java
+        Datenzugriff für Rollen.
+
+g. Tea (Teeprodukte)
+
+    Tea.java
+        Modelliert ein Teeprodukt.
+        Enthält Attribute wie Bezeichnung, Preis, Erntedatum.
+
+    DTO
+        TeaDTO.java
+            Datenübertragungsobjekt für Tee.
+
+    TeaRepository.java, TeaService.java und TeaServiceImpl.java
+        Datenzugriff und Geschäftslogik für Tees.
+
+h. TeaType (Teesorten)
+
+    TeaType.java
+        Repräsentiert die Art des Tees (White, Green, Medical Herbs).
+    TeaTypeRepository.java
+        Datenzugriff für Teesorten.
+
+i. User (Benutzer)
+
+    User.java
+        Repräsentiert einen Benutzer der Anwendung.
+        Enthält Attribute wie Vorname, Nachname, Alter, Nationalität.
+
+    DTOs und Mapper
+        UserDTO.java, UserRegisterDTO.java, UserMapper.java
+            Dienen der Datenübertragung bei Registrierung und anderen Benutzeraktionen.
+
+    UserController.java
+        Behandelt Benutzeraktionen, einschließlich Registrierung unter /users/register.
+
+    UserDetailsImpl.java
+        Implementiert die UserDetails-Schnittstelle für die Integration mit Spring Security.
+
+    UserRepository.java, UserService.java und UserServiceImpl.java
+        Datenzugriff und Geschäftslogik für Benutzer.
+
+Ressourcen
+
+    application.properties
+        Konfigurationsdatei für die Anwendung.
+        Enthält Einstellungen wie Datenbankverbindung, Port usw.
+
+    data.sql
+        SQL-Skript zum Initialisieren der Datenbank mit Standarddaten.
+        Legt möglicherweise Teesorten, Produkte, Rollen und Berechtigungen an.
+
+    Internationalisierung
+        messages.properties, messages_en.properties, messages_de.properties
+            Enthalten allgemeine Meldungen der Anwendung in verschiedenen Sprachen.
+        validationMessages.properties, validationMessages_en.properties, validationMessages_de.properties
+            Enthalten Validierungsfehlermeldungen für Eingabevalidierungen.
+
+Zuordnung zu den Projektanforderungen
+Block 1: Registrierung neuer Kunden
+
+    Registrierungsendpunkt
+        Implementiert in UserController.java unter /users/register.
+        Verwendet UserRegisterDTO.java für die Eingabedaten.
+
+    Automatische Zuweisung von Rolle und Berechtigungen
+        In UserServiceImpl.java wird bei der Registrierung standardmäßig die Rolle CLIENT zugewiesen.
+        Berechtigungen CAN_PLACE_ORDER, CAN_RETRIEVE_PURCHASE_HISTORY und CAN_RETRIEVE_PRODUCTS werden dem Benutzer zugeordnet.
+        Role.java und Authority.java modellieren Rollen und Berechtigungen.
+
+    Zuweisung des Rangs
+        Benutzer erhalten den Rang Silver bei der Registrierung.
+        Rank.java repräsentiert die verschiedenen Ränge.
+        Logik zur Rangzuweisung befindet sich in UserServiceImpl.java.
+
+    Validierung der Benutzereingaben
+        Alter: Validiert durch AgeValidator.java.
+        Nationalität: Validiert durch CountryValidator.java.
+        Fehlermeldungen werden in validationMessages_en.properties und validationMessages_de.properties bereitgestellt.
+        Internationalisierung ermöglicht Meldungen in DE und EN.
+
+Block 2: Bereitstellung von Produkten
+
+    Teesorten und Produkte
+        TeaType.java enthält die Teesorten White, Green, Medical Herbs.
+        Zu jeder Teesorte gibt es Produkte in Tea.java, mit Attributen wie Bezeichnung, Einkaufs- und Verkaufspreis, Erntedatum.
+
+    Initialisierung der Daten
+        data.sql legt die initialen Teesorten und Produkte an.
+
+    Produktendpunkt
+        ProductController.java stellt den Endpunkt /products bereit.
+        Zugriffskontrolle über WebSecurityConfig.java, sodass nur Benutzer mit CAN_RETRIEVE_PRODUCTS die Produkte sehen können.
+
+Block 3: Kauf einzelner Produkte
+
+    Bestellprozess
+        OrderController.java ermöglicht das Platzieren von Bestellungen.
+        OrderServiceImpl.java enthält die Geschäftslogik für Bestellungen.
+
+    Preisberechnung
+
+        Verkaufspreis aus Tea.java wird verwendet.
+
+        Menge (Gramm) wird berücksichtigt.
+
+        Rangbasierte Verbilligung:
+            Prozentsätze in Rank.java definiert.
+            Logik in OrderServiceImpl.java implementiert.
+
+    Gutschrift von Seeds und Rangänderung
+        Seeds (1 pro 2 CHF) werden dem Benutzerkonto gutgeschrieben.
+        Bei Erreichen bestimmter Seed-Grenzen (20, 60, 140) erfolgt eine Rangänderung.
+        Aktualisierung des Rangs in UserServiceImpl.java oder OrderServiceImpl.java.
+
+    Altersbeschränkung für 'Medical Herbs'
+        Validierung in AgeValidator.java oder zusätzliche Prüfung in OrderServiceImpl.java.
+        Verhindert Bestellungen von minderjährigen Kunden.
+
+Sicherheitskonfiguration
+
+    WebSecurityConfig.java
+        Definiert Sicherheitsregeln und schützt Endpunkte.
+        Konfiguriert Authentication und Authorization.
+
+    JWT-Authentifizierung
+        CustomAuthenticationFilter.java und CustomAuthorizationFilter.java handhaben JWT-Token.
+        Sicherstellen, dass nur autorisierte Benutzer auf geschützte Ressourcen zugreifen.
+
+Internationalisierung und Fehlermeldungen
+
+    Fehlermeldungen und Validierungstexte sind in Deutsch und Englisch verfügbar.
+    Dateien wie messages_de.properties und validationMessages_de.properties enthalten deutsche Texte.
+    Ermöglicht benutzerfreundliche Rückmeldungen in der bevorzugten Sprache des Benutzers.
+
+Zusammenfassung
+
+Die Projektstruktur ist so aufgebaut, dass alle Anforderungen abgedeckt werden:
+
+    Registrierung und Benutzerverwaltung:
+        Benutzer können sich registrieren und erhalten automatisch die erforderlichen Rollen und Berechtigungen.
+        Validierung und Internationalisierung sorgen für korrekte und verständliche Eingabeprüfung.
+
+    Produktbereitstellung:
+        Teesorten und Produkte sind in der Datenbank hinterlegt und können von berechtigten Benutzern abgerufen werden.
+
+    Bestellabwicklung:
+        Benutzer können Bestellungen aufgeben.
+        Preisberechnung und Seed-Gutschrift erfolgen gemäß den Anforderungen.
+        Rangänderungen werden automatisch vorgenommen.
+
+    Sicherheit:
+        Durch die Verwendung von Spring Security und JWT ist die Anwendung vor unbefugtem Zugriff geschützt.
+        Benutzerberechtigungen steuern den Zugriff auf Endpunkte.
+
+    Internationalisierung:
+        Unterstützt mehrsprachige Ausgaben für bessere Benutzererfahrung.
+
+Durch diese strukturierte Aufteilung und die Implementierung der einzelnen Komponenten wird sichergestellt, dass die Anwendung wie gewünscht funktioniert und alle gestellten Aufgaben erfüllt.
