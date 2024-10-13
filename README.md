@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Modul-241-und-245
 
 unser Trello-Board: https://trello.com/b/Hcgq5qQZ/paal-gruppe-modul-241-245
@@ -120,3 +121,6 @@ Modul 319 - benotete Abschlussarbeit
 
 7. Zusatzaufgabe - Bubble-Sort
 >>>>>>> Simple-Math-Operations-Programmed/main
+=======
+Alle Aufgaben in diesem Modul drehten sich darum um ein Replika der MINI-Webseite zu programmieren.
+>>>>>>> HTML-und-CSS/main

@@ -1,0 +1,147 @@
+/* CSS für das Replika der Miniseite */
+
+body {
+  font-family: verdana, sans-serif;
+  color: #4c4c4c;
+  }
+
+#wrapper {
+  width: 80%;
+  margin: 0 auto;
+  background: white;
+}
+
+h1, h2 {
+  font-family: "century gothic";
+  color: #cc3333;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+/* CSS-Styling für den Header */
+
+header {
+  background-image: url("background1.jpg");
+  background-size: 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 400px;
+}
+
+.welcome {
+  float: right;
+  width: 80%
+  margin-top: 2%;
+  color: #4c4c4c;
+  text-shadow: 1px 1px #4c4c4c;
+  text-align: center;
+}
+
+.f1_left {
+  float: left;
+  width: 15%;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+/* CSS-Styling für die Navigation */
+
+nav ul {
+  list-style: none;
+  text-align: right;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 5px 10px 5px 0;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #4c4c4c;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+nav ul li a: hover{
+  border-bottom: 2px solid #4c4c4c;
+}
+
+/* Aside-Style - Boxen verteilen mit Flexbox */
+
+.newswrapp {
+  display: flex;
+  flex-wrap: wrap; /* responsive */
+}
+
+.newswrapp > * { /* responsive */
+  flex: 1 1 0%;
+}
+
+.box_wrapp {
+  padding: 10px;
+  background: rgba(0,0,0,0.1);
+  margin: 5px
+  border-radius: 5px;
+}
+
+/* Article-Styling mit Flex */
+
+.flex {
+  margin-left: 20px;
+  width: 60%;
+}
+
+.one {
+  display: flex; 
+  flex-wrap: wrap; /* responsive */
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+/* responsive */
+.one > * {
+  flex: 1 1 20%;
+}
+
+.two {
+  display: flex;
+  flex-wrap: wrap; /* responsive */
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.two > * { /* responsive */
+  flex: 1 1 20%;
+}
+
+img {
+  max-width: 500px;
+  height: auto;
+}
+
+/* media responsivness */
+
+@media only screen and (mind-width: 320px) and (max-width: 768px) {
+
+  section img {
+    max-width: 100%;
+  }
+
+  header {
+    font-size: 0.7rem;
+    height: 200px;
+  }
+
+}
