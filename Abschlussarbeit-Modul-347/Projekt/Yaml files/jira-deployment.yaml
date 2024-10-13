@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jira-deployment
+  namespace: jira
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jira-app
+  template:
+    metadata:
+      labels:
+        app: jira-app
+    spec:
+      containers:
+        - name: jira-container
+          image: atlassian/jira-software:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: "jdbc:postgresql://postgres.jira.svc.cluster.local/jira-db"
+            - name: DB_USER
+              value: "jira-user"
+            - name: DB_PASSWORD
+              value: "securepassword"
+            - name: JIRA_HOME
+              value: "/var/jira"
+          volumeMounts:
+            - name: storage
+              mountPath: "/var/jira"
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: jira-pvc-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jira-service
+  namespace: jira-namespace
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+  selector:
+    app: jira-app
